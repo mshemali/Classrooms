@@ -19,8 +19,9 @@
         <th scope="col">Date of Birth</th>
         <th scope="col">Gender</th>
         <th scope="col">Grade</th>
+        {% if request.user.is_staff %}
         <th scope="col">Actions</th>
-
+        {% endif %}
 
 
       </tr>
@@ -35,10 +36,12 @@
         <td>{{a_student.date_of_birth}}</td>
         <td>{{a_student.gender}}</td>
         <td>{{a_student.exam_grade}}</td>
+        {% if request.user.is_staff %}
         <td>
           <a href="{% url 'student-update' a_student.id %}" class="btn" style="background-color: #000034; color: white;">Update</a>
           <a href="{% url 'student-delete' a_student.id %}" class="btn" style="background-color: #FFA500; color: #000034;">Delete</a>
         </td>
+        {% endif %}
 
 
 
